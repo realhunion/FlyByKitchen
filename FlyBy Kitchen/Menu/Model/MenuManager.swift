@@ -126,8 +126,8 @@ class MenuManager {
         let payload1 = ["createdAt":Timestamp(date: Date()),
                         "typeOf":"item",
                         "categoryID":categoryID,
-                        "title": "Sample Item",
-                        "description": "Tap to edit",
+                        "title": "Sample Item - Tap To Edit",
+                        "description": "",
                         "price":0.0,
             ] as [String : Any]
         let ref1 = db.collection("Restaurants").document(myUID).collection("Menu").document()
@@ -157,7 +157,8 @@ class MenuManager {
             payload["description"] = d
         }
         if let p = price {
-            payload["price"] = p
+            
+            payload["price"] = abs(p)
         }
         
         db.collection("Restaurants").document(myUID).collection("Menu").document(itemID).setData(payload, merge: true)

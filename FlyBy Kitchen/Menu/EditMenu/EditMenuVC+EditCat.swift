@@ -86,7 +86,7 @@ extension EditMenuVC {
         
         let alert = UIAlertController(title: "Are you sure you want to delete this category?", message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             MenuManager.shared.deleteCategory(categoryID: categoryID)
         }))
         

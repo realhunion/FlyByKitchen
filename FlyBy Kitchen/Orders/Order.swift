@@ -15,7 +15,7 @@ struct Order {
     
     var timestamp : Timestamp
     var totalPrice : Double
-    var table : Int
+    var table : String
     var itemArray : [String]
     
     

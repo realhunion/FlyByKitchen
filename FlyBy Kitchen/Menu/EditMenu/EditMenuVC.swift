@@ -204,11 +204,11 @@ class EditMenuVC : UITableViewController {
         let cat = m.getCategoryArray()[indexPath.section]
         var item = m.getItemArray(categoryID: cat.categoryID)[indexPath.row]
         
-        if item.title == "Sample Item" && item.description == "Tap to edit" {
-            item.title = ""
-            item.description = ""
-            item.price = 0.0
-        }
+//        if item.title == "Sample Item" && item.description == "Tap to edit" {
+//            item.title = ""
+//            item.description = ""
+//            item.price = 0.0
+//        }
         
         vc.item = item
         

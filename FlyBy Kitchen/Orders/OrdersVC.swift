@@ -47,9 +47,9 @@ class OrdersVC: UITableViewController {
 
         cell.accessoryType = .disclosureIndicator
         
-        cell.textLabel?.text = "Table # \(order.table)"
+        cell.textLabel?.text = "Table \(order.table)\n@ \(getTimestampString(tStamp: order.timestamp)) → $\(order.totalPrice)"
         cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        cell.textLabel?.textColor = UIColor.systemGreen
+        cell.textLabel?.textColor = UIColor.systemRed
         
         var itemsString = ""
         for item in order.itemArray {
@@ -58,9 +58,29 @@ class OrdersVC: UITableViewController {
         
         cell.detailTextLabel?.text = itemsString
         cell.detailTextLabel?.numberOfLines = 99
+        cell.textLabel?.numberOfLines = 3
         cell.detailTextLabel?.font = .preferredFont(forTextStyle: .body)
         
         return cell
+    }
+    
+    func getTimestampString(tStamp : Timestamp) -> String {
+        
+        let timestampDate = tStamp.dateValue()
+        let timestampTimeInterval = NSInteger(-timestampDate.timeIntervalSinceNow)
+        let minutesAgo = (timestampTimeInterval / 60)
+        let hoursAgo = (timestampTimeInterval / 3600)
+        let daysAgo = (timestampTimeInterval / 86400)
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "M/d h:mm a"
+        formatter.amSymbol = "AM"
+        formatter.pmSymbol = "PM"
+        let dateString = formatter.string(from: timestampDate)
+        
+        return dateString
+        
     }
 
     /*
